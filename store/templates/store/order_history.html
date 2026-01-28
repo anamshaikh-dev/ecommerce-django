@@ -1,0 +1,63 @@
+{% extends 'store/base.html' %}
+{% block content %}
+
+<div class="container">
+  <h2 class="page-title">My Orders</h2>
+
+  {% if orders %}
+    <div class="orders-list">
+      {% for order in orders %}
+        <div class="order-card">
+
+          <!-- HEADER -->
+          <div class="order-header">
+            <div>
+              <h4>Order #{{ order.id }}</h4>
+              <span class="order-date">
+                {{ order.created_at|date:"d M Y" }}
+              </span>
+            </div>
+            <span class="order-status success">Placed</span>
+          </div>
+
+          <!-- ITEMS -->
+          <div class="order-items">
+            {% for item in order.items.all %}
+              <div class="order-item">
+
+                <!-- IMAGE -->
+                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+
+                <!-- NAME + QTY -->
+                <div>
+                  <p class="item-name">{{ item.product.name }}</p>
+                  <p class="item-qty">Qty: {{ item.quantity }}</p>
+                </div>
+
+                <!-- PRICE -->
+                <p class="item-price">₹{{ item.price }}</p>
+
+              </div>
+            {% endfor %}
+          </div>
+
+          <!-- FOOTER -->
+          <div class="order-footer">
+            <strong>Total: ₹{{ order.total_price }}</strong>
+
+            <a href="{% url 'order_detail' order.id %}" class="btn-primary">
+              View Details
+            </a>
+          </div>
+
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="empty-state">
+      📦 You have not placed any orders yet
+    </div>
+  {% endif %}
+</div>
+
+{% endblock %}

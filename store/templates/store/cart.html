@@ -1,0 +1,67 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="cart-container">
+
+  <h2 class="cart-title">Your Cart</h2>
+
+  {% if cart %}
+    <div class="cart-grid">
+
+      <!-- CART ITEMS -->
+      <div class="cart-items">
+        {% for key, item in cart.items %}
+          <div class="cart-item">
+
+            <img src="{{ item.image }}" alt="{{ item.name }}">
+
+            <div class="item-details">
+             <h4>{{ item.name }}</h4>
+             <p>Price: ₹{{ item.price }}</p>
+             <div class="qty-controls">
+              <a href="{% url 'decrease_quantity' key %}" class="qty-btn">−</a>
+
+             <span class="qty-number">{{ item.quantity }}</span>
+
+             <a href="{% url 'increase_quantity' key %}" class="qty-btn">+</a>
+            </div>
+            <a href="{% url 'remove_from_cart' key %}" class="remove-btn">
+             Remove
+            </a>
+        </div>
+
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- CART SUMMARY -->
+     <div class="cart-summary">
+  <h3>Order Summary</h3>
+  <p><strong>Total Amount:</strong></p>
+  <h2>₹{{ total }}</h2>
+
+  <form method="POST" action="{% url 'place_order' %}">
+    {% csrf_token %}
+    <button type="submit" class="checkout-btn">
+      Place Order
+    </button>
+  </form>
+  </div>
+
+    </div>
+
+  {% else %}
+    <div class="empty-state">
+  🛒 Your cart is empty  
+  <br>
+  <a href="{% url 'product_list' %}" class="btn">
+    Continue Shopping
+  </a>
+</div>
+  {% endif %}
+
+</div>
+
+{% endblock %}

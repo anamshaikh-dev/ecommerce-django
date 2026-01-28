@@ -1,0 +1,24 @@
+{% extends 'store/base.html' %}
+{% block content %}
+
+<h2 class="page-title">My Orders</h2>
+
+<div class="orders-container">
+    {% for order in orders %}
+    <div class="order-card">
+        <div>
+            <strong>Order #{{ order.id }}</strong>
+            <p>{{ order.date }}</p>
+        </div>
+
+        <div>
+            <p>Total: ₹{{ order.total }}</p>
+            <span class="status {{ order.status|lower }}">
+                {{ order.status }}
+            </span>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

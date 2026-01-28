@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MyStore</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'store/style.css' %}">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+ <nav class="navbar">
+  <div class="nav-container">
+    <a href="{% url 'product_list' %}" class="logo">🛒 MyStore</a>
+
+    <ul class="nav-menu">
+      <li><a href="{% url 'product_list' %}">🏠︎Home</a></li>
+      <li><a href="{% url 'cart' %}">🛍️Cart</a></li>
+      <li><a href="{% url 'order_history' %}">📦My Orders</a></li>
+    </ul>
+  </div>
+</nav>
+
+  <!-- PAGE CONTENT -->
+  <main class="container">
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2026 MyStore | Built with ❤️ using Django</p>
+  </footer>
+
+</body>
+</html>

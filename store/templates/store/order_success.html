@@ -1,0 +1,33 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+<div style="
+  max-width:600px;
+  margin:60px auto;
+  text-align:center;
+  padding:40px;
+  background:#f0fff4;
+  border-radius:10px;
+">
+
+  <h1 style="color:#2f855a;">🎉 Order Placed Successfully!</h1>
+
+  <p style="font-size:18px;margin:20px 0;">
+    Thank you for your purchase 💖  
+    Your order has been placed successfully.
+  </p>
+
+  <a href="{% url 'order_history' %}" style="
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 24px;
+    background:#2f855a;
+    color:#fff;
+    text-decoration:none;
+    border-radius:6px;
+  ">
+    View My Orders
+  </a>
+
+</div>
+{% endblock %}

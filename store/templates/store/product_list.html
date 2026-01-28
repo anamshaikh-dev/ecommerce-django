@@ -1,0 +1,69 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ================= SEARCH BAR ================= -->
+<div class="search-section">
+  <form method="get" class="search-form">
+    <input
+      type="text"
+      name="q"
+      placeholder="Search products..."
+      value="{{ request.GET.q }}"
+    >
+    <button type="submit">Search</button>
+  </form>
+</div>
+
+<!-- ================= CATEGORIES ================= -->
+<div class="category-section">
+  <h3>Categories</h3>
+
+  <div class="category-list">
+    <!-- ALL PRODUCTS -->
+    <a href="{% url 'product_list' %}"
+       class="category-card {% if not request.GET.category %}active{% endif %}">
+      All
+    </a>
+
+    {% for category in categories %}
+      <a href="{% url 'product_list' %}?category={{ category.id }}"
+         class="category-card {% if request.GET.category == category.id|stringformat:'s' %}active{% endif %}">
+        {{ category.name }}
+      </a>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- ================= PRODUCTS ================= -->
+<div class="product-section">
+  <div class="product-grid">
+
+    {% if products %}
+      {% for product in products %}
+        <div class="product-card">
+
+          <a href="{% url 'product_detail' product.id %}">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+          </a>
+
+          <div class="product-info">
+            <h4>{{ product.name }}</h4>
+            <p class="price">₹{{ product.price }}</p>
+
+            <a href="{% url 'add_to_cart' product.id %}" class="btn cart-btn">
+              Add to Cart
+            </a>
+          </div>
+
+        </div>
+      {% endfor %}
+    {% else %}
+      <p class="no-products">No products found.</p>
+    {% endif %}
+
+  </div>
+</div>
+
+{% endblock %}
