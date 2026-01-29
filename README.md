@@ -20,22 +20,22 @@ It allows users to browse products, filter by category, search products, add ite
 ## 🖥️ Screenshots
 
 ### Home Page
-![Home](Screenshots/home.JPG)
+![Home](screenshots/home.JPG)
 
 ### Product Page
-![Products](Screenshots/description.JPG)
+![Products](screenshots/description.JPG)
 
 ### Cart Page
-![Cart](Screenshots/cart.JPG)
+![Cart](screenshots/cart.JPG)
 
 ### Order Placed
-![Cart](Screenshots/Order_placed.JPG)
+![Cart](screenshots/Order_placed.JPG)
 
 ### Order History
-![Cart](Screenshots/order_history.JPG)
+![Cart](screenshots/order_history.JPG)
 
 ### Order History Detail
-![Cart](Screenshots/order_detail.JPG)
+![Cart](screenshots/order_detail.JPG)
 
 ---
 
