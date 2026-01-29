@@ -26,7 +26,7 @@ It allows users to browse products, filter by category, search products, add ite
 ![Products](screenshots/description.JPG)
 
 ### Cart Page
-![Cart](screenshots/cart.JPG)
+![Cart](ecommerce/screenshots/cart.JPG)
 
 ### Order Placed
 ![Cart](screenshots/Order_placed.JPG)
